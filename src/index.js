@@ -2,6 +2,8 @@ require('dotenv').config();
 const express = require('express');
 const mongoose = require('mongoose');
 const cors = require('cors');
+const jwt = require('jsonwebtoken');
+const bcrypt = require('bcryptjs');
 
 const app = express();
 
@@ -22,6 +24,7 @@ mongoose.connect(MONGODB_URI, {
 
 // Routes
 app.use('/api/contacts', require('./routes/contacts'));
+app.use('/api/auth', require('./routes/auth'));
 
 // Basic route for testing
 app.get('/', (req, res) => {
